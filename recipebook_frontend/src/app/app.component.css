@@ -1,0 +1,9 @@
+:host {
+  display: block;
+  color: #111827;
+  background: #ffffff;
+  --color-primary: #4CAF50;
+  --color-secondary: #FFC107;
+  --color-accent: #E91E63;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}

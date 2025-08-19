@@ -1,0 +1,88 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  border-bottom: 1px solid #eaeaea;
+  background: #ffffffc9;
+  backdrop-filter: saturate(180%) blur(8px);
+}
+
+.brand a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #111827;
+  text-decoration: none;
+}
+
+.logo {
+  font-size: 1.4rem;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  max-width: 720px;
+  margin: 0 16px;
+}
+
+.search input {
+  flex: 1;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  padding: 10px 12px;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color .15s ease;
+}
+
+.search input:focus {
+  border-color: #4caf50;
+}
+
+.search .clear {
+  border: none;
+  background: transparent;
+  font-size: 1.2rem;
+  color: #6b7280;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+.favorite-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: .95rem;
+  color: #374151;
+}
+
+.actions .btn {
+  display: inline-block;
+  padding: 10px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  border: 1px solid transparent;
+}
+
+.btn.primary {
+  background: #4CAF50;
+  color: white;
+}
+
+.btn.primary:hover {
+  filter: brightness(0.95);
+}

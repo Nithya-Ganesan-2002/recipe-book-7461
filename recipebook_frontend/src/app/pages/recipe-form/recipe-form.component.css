@@ -1,0 +1,113 @@
+.container {
+  padding: 16px 20px 40px;
+}
+
+.form {
+  max-width: 960px;
+  margin: 0 auto;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #efefef;
+}
+
+.grid {
+  display: grid;
+  gap: 16px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.field label {
+  display: block;
+  margin-bottom: 6px;
+  color: #374151;
+  font-size: .95rem;
+}
+
+.req {
+  color: #E91E63;
+}
+
+input[type="text"],
+input[type="number"],
+select,
+textarea {
+  width: 100%;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.image-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.image-row img {
+  height: 80px;
+  width: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+.repeatable {
+  display: grid;
+  gap: 8px;
+}
+
+.repeat-row {
+  display: grid;
+  grid-template-columns: 120px 1fr auto;
+  gap: 8px;
+  align-items: start;
+}
+
+.repeat-row .w-2 {
+  min-width: 0;
+}
+
+.repeat-row .w-3 {
+  min-width: 0;
+}
+
+.btn {
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: .95rem;
+  cursor: pointer;
+}
+
+.btn.primary {
+  background: #4CAF50;
+  color: white;
+  border-color: transparent;
+}
+
+.btn.danger {
+  background: #fee2e2;
+  color: #991b1b;
+  border-color: #fecaca;
+}

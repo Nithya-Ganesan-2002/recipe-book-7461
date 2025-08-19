@@ -1,0 +1,86 @@
+<app-header></app-header>
+
+<div class="container">
+  <form (ngSubmit)="onSubmit()" class="form">
+    <div class="header">
+      <h2>{{ editMode() ? 'Edit Recipe' : 'Create Recipe' }}</h2>
+      <div class="actions">
+        <a routerLink="/" class="btn">Cancel</a>
+        <button type="submit" class="btn primary">{{ editMode() ? 'Save Changes' : 'Create' }}</button>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="field">
+        <label>Title <span class="req">*</span></label>
+        <input type="text" [ngModel]="title()" (ngModelChange)="title.set($event)" name="title" required />
+      </div>
+
+      <div class="field">
+        <label>Description</label>
+        <textarea rows="3" [ngModel]="description()" (ngModelChange)="description.set($event)" name="description"></textarea>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label>Prep Minutes</label>
+          <input type="number" min="0" [ngModel]="prepMinutes()" (ngModelChange)="prepMinutes.set($event ? +$event : null)" name="prepMinutes" />
+        </div>
+        <div class="field">
+          <label>Cook Minutes</label>
+          <input type="number" min="0" [ngModel]="cookMinutes()" (ngModelChange)="cookMinutes.set($event ? +$event : null)" name="cookMinutes" />
+        </div>
+        <div class="field">
+          <label>Servings</label>
+          <input type="number" min="1" [ngModel]="servings()" (ngModelChange)="servings.set($event ? +$event : null)" name="servings" />
+        </div>
+        <div class="field">
+          <label>Difficulty</label>
+          <select [ngModel]="difficulty()" (ngModelChange)="difficulty.set($event)" name="difficulty">
+            <option value="">Select</option>
+            <option value="Easy">Easy</option>
+            <option value="Medium">Medium</option>
+            <option value="Hard">Hard</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Tags (comma separated)</label>
+        <input type="text" [ngModel]="tags()" (ngModelChange)="tags.set($event)" name="tags" placeholder="breakfast, vegan, dessert" />
+      </div>
+
+      <div class="field">
+        <label>Cover Image</label>
+        <div class="image-row">
+          <input type="file" accept="image/*" (change)="onImageSelected($event)" />
+          <img *ngIf="imageUrl()" [src]="imageUrl()" alt="Preview" />
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Ingredients</label>
+        <div class="repeatable">
+          <div class="repeat-row" *ngFor="let ing of ingredients(); index as i">
+            <input class="w-2" type="text" [ngModel]="ing.amount" (ngModelChange)="updateIngredient(i, { amount: $event })" name="amount-{{i}}" placeholder="2 cups" />
+            <input class="w-3" type="text" [ngModel]="ing.name" (ngModelChange)="updateIngredient(i, { name: $event })" name="name-{{i}}" placeholder="Flour" />
+            <button type="button" class="btn danger" (click)="removeIngredient(i)">Remove</button>
+          </div>
+          <button type="button" class="btn" (click)="addIngredient()">+ Add Ingredient</button>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Instructions</label>
+        <div class="repeatable">
+          <div class="repeat-row" *ngFor="let s of instructions(); index as i">
+            <span class="step">#{{ i + 1 }}</span>
+            <textarea rows="2" [ngModel]="s.text" (ngModelChange)="updateInstruction(i, { text: $event })" name="step-{{i}}"></textarea>
+            <button type="button" class="btn danger" (click)="removeInstruction(i)">Remove</button>
+          </div>
+          <button type="button" class="btn" (click)="addInstruction()">+ Add Step</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

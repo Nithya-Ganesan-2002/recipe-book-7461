@@ -1,0 +1,31 @@
+<article class="card">
+  <a class="media" [routerLink]="['/detail', recipe.id]" [style.backgroundImage]="recipe.imageUrl ? 'url(' + recipe.imageUrl + ')' : 'none'">
+    <div class="placeholder" *ngIf="!recipe.imageUrl">
+      <span class="emoji">🥘</span>
+    </div>
+  </a>
+  <div class="body">
+    <div class="title-row">
+      <h3 class="title">
+        <a [routerLink]="['/detail', recipe.id]">{{ recipe.title }}</a>
+      </h3>
+      <button class="icon-btn" [class.fav]="recipe.favorite" (click)="toggleFav.emit(recipe.id)" title="Toggle favorite" aria-label="Toggle favorite">
+        <span>❤</span>
+      </button>
+    </div>
+    <p class="desc" *ngIf="recipe.description">{{ recipe.description }}</p>
+    <div class="meta">
+      <span *ngIf="recipe.prepMinutes">⏱ Prep {{ recipe.prepMinutes }}m</span>
+      <span *ngIf="recipe.cookMinutes">🔥 Cook {{ recipe.cookMinutes }}m</span>
+      <span *ngIf="recipe.servings">🍽 {{ recipe.servings }}</span>
+      <span *ngIf="recipe.difficulty">⭐ {{ recipe.difficulty }}</span>
+    </div>
+    <div class="tags" *ngIf="recipe.tags?.length">
+      <span class="tag" *ngFor="let t of recipe.tags">#{{ t }}</span>
+    </div>
+    <div class="row-actions">
+      <a class="btn" [routerLink]="['/edit', recipe.id]">Edit</a>
+      <button class="btn danger" (click)="delete.emit(recipe.id)">Delete</button>
+    </div>
+  </div>
+</article>
