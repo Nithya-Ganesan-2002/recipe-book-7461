@@ -1,0 +1,50 @@
+<app-header></app-header>
+
+<div class="container" *ngIf="recipe() as r">
+  <div class="header">
+    <h2>{{ r.title }}</h2>
+    <div class="actions">
+      <button class="icon-btn" [class.fav]="r.favorite" (click)="toggleFavorite()" title="Toggle favorite" aria-label="Toggle favorite">❤</button>
+      <a class="btn" [routerLink]="['/edit', r.id]">Edit</a>
+      <button class="btn danger" (click)="delete()">Delete</button>
+    </div>
+  </div>
+
+  <div class="cover" [style.backgroundImage]="r.imageUrl ? 'url(' + r.imageUrl + ')' : 'none'">
+    <div class="placeholder" *ngIf="!r.imageUrl">🍲</div>
+  </div>
+
+  <div class="meta">
+    <span *ngIf="r.prepMinutes">⏱ Prep {{ r.prepMinutes }}m</span>
+    <span *ngIf="r.cookMinutes">🔥 Cook {{ r.cookMinutes }}m</span>
+    <span *ngIf="r.servings">🍽 {{ r.servings }}</span>
+    <span *ngIf="r.difficulty">⭐ {{ r.difficulty }}</span>
+  </div>
+
+  <p class="desc" *ngIf="r.description">{{ r.description }}</p>
+
+  <div class="tags" *ngIf="r.tags?.length">
+    <span class="tag" *ngFor="let t of r.tags">#{{ t }}</span>
+  </div>
+
+  <section class="two-col">
+    <div>
+      <h3>Ingredients</h3>
+      <ul class="ingredients">
+        <li *ngFor="let ing of r.ingredients">
+          <span class="amount" *ngIf="ing.amount">{{ ing.amount }}</span>
+          <span class="name">{{ ing.name || '—' }}</span>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <h3>Instructions</h3>
+      <ol class="instructions">
+        <li *ngFor="let s of r.instructions">
+          <span class="step">#{{ s.step }}</span>
+          <span class="text">{{ s.text }}</span>
+        </li>
+      </ol>
+    </div>
+  </section>
+</div>

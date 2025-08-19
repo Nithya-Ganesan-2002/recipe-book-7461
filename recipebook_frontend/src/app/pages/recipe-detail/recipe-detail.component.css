@@ -1,0 +1,139 @@
+.container {
+  padding: 16px 20px 40px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #efefef;
+}
+
+.icon-btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 6px 8px;
+  font-size: 1.2rem;
+  color: #9ca3af;
+}
+
+.icon-btn.fav {
+  color: #E91E63;
+}
+
+.btn {
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: .95rem;
+  cursor: pointer;
+}
+
+.btn.danger {
+  background: #fee2e2;
+  color: #991b1b;
+  border-color: #fecaca;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.cover {
+  width: 100%;
+  padding-top: 46%;
+  background-color: #f3f4f6;
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cover .placeholder {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: #9ca3af;
+  font-size: 3rem;
+}
+
+.meta {
+  display: flex;
+  gap: 12px;
+  color: #6b7280;
+  font-size: .95rem;
+  padding: 10px 0;
+}
+
+.desc {
+  color: #374151;
+  padding: 6px 0 10px;
+}
+
+.tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  padding-bottom: 10px;
+}
+
+.tag {
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  border-radius: 999px;
+  padding: 2px 8px;
+  font-size: .85rem;
+  color: #374151;
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+@media (min-width: 800px) {
+  .two-col {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.ingredients {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+}
+
+.instructions {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.instructions li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.instructions .step {
+  color: #4CAF50;
+  font-weight: 700;
+}
+
+.amount {
+  color: #6b7280;
+  margin-right: 6px;
+}

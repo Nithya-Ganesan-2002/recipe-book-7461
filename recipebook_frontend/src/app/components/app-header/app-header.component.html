@@ -1,0 +1,31 @@
+<header class="navbar">
+  <div class="brand">
+    <a routerLink="/" aria-label="RecipeBook Home">
+      <span class="logo">🍳</span>
+      <span class="title">RecipeBook</span>
+    </a>
+  </div>
+
+  <div class="search">
+    <input
+      type="text"
+      [value]="query()"
+      (input)="onSearchInput($any($event.target)?.value ?? '')"
+      placeholder="Search recipes, ingredients, or tags..."
+      aria-label="Search recipes"
+    />
+    <button class="clear" (click)="clear()" [disabled]="!query()">×</button>
+    <label class="favorite-toggle">
+      <input
+        type="checkbox"
+        [checked]="favoritesOnly()"
+        (change)="onFavoritesToggle(!!$any($event.target)?.checked)"
+      />
+      <span>Favorites</span>
+    </label>
+  </div>
+
+  <nav class="actions">
+    <a routerLink="/create" class="btn primary">+ New Recipe</a>
+  </nav>
+</header>

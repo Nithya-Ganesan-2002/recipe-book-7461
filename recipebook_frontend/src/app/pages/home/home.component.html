@@ -1,0 +1,43 @@
+<app-header (searchChange)="onHeaderSearchChange($event)"></app-header>
+
+<section class="toolbar">
+  <div class="filters">
+    <label>
+      Sort
+      <select [value]="sort()" (change)="sort.set($any($event.target)?.value)">
+        <option value="newest">Newest</option>
+        <option value="oldest">Oldest</option>
+        <option value="title">Title</option>
+      </select>
+    </label>
+
+    <label>
+      Tag
+      <select [value]="tag()" (change)="onSelectTag($any($event.target)?.value)">
+        <option value="">All</option>
+        <option *ngFor="let t of tags()" [value]="t">{{ t }}</option>
+      </select>
+    </label>
+  </div>
+  <div class="hint">
+    Tip: Use the search box to find recipes by title, ingredient, or tag.
+  </div>
+</section>
+
+<section class="grid" *ngIf="recipes().length; else empty">
+  <app-recipe-card
+    *ngFor="let r of recipes()"
+    [recipe]="r"
+    (toggleFav)="onToggleFavorite($event)"
+    (delete)="onDelete($event)"
+  />
+</section>
+
+<ng-template #empty>
+  <div class="empty">
+    <div class="emoji">🧑‍🍳</div>
+    <h2>No recipes yet</h2>
+    <p>Create your first recipe using the “New Recipe” button.</p>
+    <a routerLink="/create" class="btn primary">Create Recipe</a>
+  </div>
+</ng-template>
