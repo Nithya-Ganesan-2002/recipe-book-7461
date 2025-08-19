@@ -17,8 +17,18 @@
       </div>
 
       <div class="field">
-        <label>Description</label>
-        <textarea rows="3" [ngModel]="description()" (ngModelChange)="description.set($event)" name="description"></textarea>
+        <label>Description <span class="req">*</span></label>
+        <textarea
+          rows="3"
+          [ngModel]="description()"
+          (ngModelChange)="description.set($event)"
+          name="description"
+          required
+          #descCtrl="ngModel"
+        ></textarea>
+        <div class="error" *ngIf="descCtrl.invalid && (descCtrl.touched || descCtrl.dirty)">
+          Description is required.
+        </div>
       </div>
 
       <div class="row">

@@ -114,16 +114,22 @@ export class RecipeFormComponent implements OnInit {
   // PUBLIC_INTERFACE
   /** Save the recipe (create or update) and navigate to detail view */
   onSubmit(): void {
+    const alertFn = (typeof globalThis !== 'undefined' && (globalThis as any).alert) ? (globalThis as any).alert : null;
+
     if (!this.title().trim()) {
-      const alertFn = (typeof globalThis !== 'undefined' && (globalThis as any).alert) ? (globalThis as any).alert : null;
-      if (alertFn) {
-        alertFn('Title is required.');
-      }
+      if (alertFn) alertFn('Title is required.');
       return;
     }
+
+    if (!this.description().trim()) {
+      if (alertFn) alertFn('Description is required.');
+      return;
+    }
+
     const payload: Omit<Recipe, 'id' | 'createdAt' | 'updatedAt' | 'favorite'> = {
       title: this.title().trim(),
-      description: this.description().trim() || undefined,
+      // description now mandatory, so pass trimmed string (not undefined)
+      description: this.description().trim(),
       imageUrl: this.imageUrl().trim() || undefined,
       prepMinutes: this.prepMinutes() ?? undefined,
       cookMinutes: this.cookMinutes() ?? undefined,

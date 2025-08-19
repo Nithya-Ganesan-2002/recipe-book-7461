@@ -111,3 +111,9 @@ textarea {
   color: #991b1b;
   border-color: #fecaca;
 }
+
+.error {
+  color: #b91c1c;
+  font-size: 0.9rem;
+  margin-top: 6px;
+}
